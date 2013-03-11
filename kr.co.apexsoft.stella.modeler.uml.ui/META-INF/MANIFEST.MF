@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: UML Diagram UI
+Bundle-SymbolicName: kr.co.apexsoft.stella.modeler.uml.ui;singleton:=true
+Bundle-Version: 0.1.0
+Bundle-Activator: kr.co.apexsoft.stella.modeler.uml.ui.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.emf.edit,
+ org.eclipse.emf.transaction,
+ org.eclipse.gef,
+ org.eclipse.graphiti,
+ org.eclipse.graphiti.ui,
+ org.eclipse.ui.views.properties.tabbed
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-Vendor: Apexsoft.co.kr

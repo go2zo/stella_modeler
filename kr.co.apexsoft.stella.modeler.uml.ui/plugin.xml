@@ -2,23 +2,6 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension
-         point="org.eclipse.ui.newWizards">
-      <category
-            id="kr.co.apexsoft.stella.modeler.ui.modelerCategory"
-            name="Stella Modeler"
-            parentCategory="kr.co.apexsoft.stella.mainCategory">
-      </category>
-   </extension>
-   <extension
-         point="org.eclipse.ui.editors">
-      <editor
-            class="kr.co.apexsoft.stella.modeler.ui.editor.StellaModelerDiagramEditor"
-            default="false"
-            id="kr.co.apexsoft.stella.modeler.ui.editor"
-            name="Stella Modeler Editor">
-      </editor>
-   </extension>
-   <extension
          point="org.eclipse.graphiti.ui.diagramTypes">
       <diagramType
             description="This is the diagram type for the UML2 diagram"
@@ -26,22 +9,19 @@
             name="UML2 Diagram Type"
             type="UML2">
       </diagramType>
-   </extension>
-   <extension
+   </extension>   <extension
          point="org.eclipse.graphiti.ui.diagramTypeProviders">
       <diagramTypeProvider
-            class="kr.co.apexsoft.stella.modeler.ui.diagram.UMLDiagramTypeProvider"
+            class="kr.co.apexsoft.stella.modeler.uml.ui.diagram.UMLDiagramTypeProvider"
             description="This is the diagram type for the UML2 diagram"
             id="kr.co.apexsoft.stella.modeler.ui.diagram.UML2DiagramType"
             name="UML2 Editor">
       </diagramTypeProvider>
-   </extension>
-   <extension
+   </extension>   <extension
          point="org.eclipse.graphiti.ui.imageProviders">
       <imageProvider
-            class="kr.co.apexsoft.stella.modeler.ui.ImageProvider"
+            class="kr.co.apexsoft.stella.modeler.uml.ui.ImageProvider"
             id="kr.co.apexsoft.stella.modeler.ui.ImageProvider">
       </imageProvider>
    </extension>
-
 </plugin>
