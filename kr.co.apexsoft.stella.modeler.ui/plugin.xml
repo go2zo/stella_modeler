@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
+   <extension-point id="featureContainers" name="Feature Containers" schema="schema/featureContainers.exsd"/>
+   <extension-point id="featureProviders" name="Feature Providers" schema="schema/featureProviders.exsd"/>
    <extension
          point="org.eclipse.ui.newWizards">
       <category
@@ -17,31 +19,6 @@
             id="kr.co.apexsoft.stella.modeler.ui.editor"
             name="Stella Modeler Editor">
       </editor>
-   </extension>
-   <extension
-         point="org.eclipse.graphiti.ui.diagramTypes">
-      <diagramType
-            description="This is the diagram type for the UML2 diagram"
-            id="kr.co.apexsoft.stella.modeler.ui.diagram.UML2DiagramType"
-            name="UML2 Diagram Type"
-            type="UML2">
-      </diagramType>
-   </extension>
-   <extension
-         point="org.eclipse.graphiti.ui.diagramTypeProviders">
-      <diagramTypeProvider
-            class="kr.co.apexsoft.stella.modeler.ui.diagram.UMLDiagramTypeProvider"
-            description="This is the diagram type for the UML2 diagram"
-            id="kr.co.apexsoft.stella.modeler.ui.diagram.UML2DiagramType"
-            name="UML2 Editor">
-      </diagramTypeProvider>
-   </extension>
-   <extension
-         point="org.eclipse.graphiti.ui.imageProviders">
-      <imageProvider
-            class="kr.co.apexsoft.stella.modeler.ui.ImageProvider"
-            id="kr.co.apexsoft.stella.modeler.ui.ImageProvider">
-      </imageProvider>
    </extension>
 
 </plugin>

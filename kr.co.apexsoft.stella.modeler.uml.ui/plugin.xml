@@ -16,6 +16,12 @@
             description="This is the diagram type for the UML2 diagram"
             id="kr.co.apexsoft.stella.modeler.ui.diagram.UML2DiagramType"
             name="UML2 Editor">
+         <diagramType
+               id="kr.co.apexsoft.stella.modeler.ui.diagram.UML2DiagramType">
+         </diagramType>
+         <imageProvider
+               id="kr.co.apexsoft.stella.modeler.ui.ImageProvider">
+         </imageProvider>
       </diagramTypeProvider>
    </extension>   <extension
          point="org.eclipse.graphiti.ui.imageProviders">
@@ -24,4 +30,12 @@
             id="kr.co.apexsoft.stella.modeler.ui.ImageProvider">
       </imageProvider>
    </extension>
+                  <extension
+                        point="kr.co.apexsoft.stella.modeler.featureContainers">
+                     <featureContainer
+                           class="kr.co.apexsoft.stella.modeler.uml.ui.FeatureContainer1"
+                           id="kr.co.apexsoft.stella.modeler.uml.ui.featureContainer1"
+                           name="kr.co.apexsoft.stella.modeler.uml.ui.featureContainer1">
+                     </featureContainer>
+                  </extension>
 </plugin>
