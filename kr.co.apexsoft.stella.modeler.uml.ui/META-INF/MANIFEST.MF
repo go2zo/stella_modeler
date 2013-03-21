@@ -4,15 +4,17 @@ Bundle-Name: UML Diagram UI
 Bundle-SymbolicName: kr.co.apexsoft.stella.modeler.uml.ui;singleton:=true
 Bundle-Version: 0.1.0
 Bundle-Activator: kr.co.apexsoft.stella.modeler.uml.ui.Activator
-Require-Bundle: org.eclipse.ui,
- org.eclipse.core.runtime,
+Require-Bundle: org.eclipse.ui.ide,
  org.eclipse.emf.edit,
  org.eclipse.emf.transaction,
  org.eclipse.gef,
  org.eclipse.graphiti,
- org.eclipse.graphiti.ui,
  org.eclipse.ui.views.properties.tabbed,
- kr.co.apexsoft.stella.modeler.core;bundle-version="0.1.0"
+ org.apache.xerces
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-Vendor: Apexsoft.co.kr
+Import-Package: org.eclipse.core.runtime;version="3.4.0",
+ org.eclipse.graphiti.ui.editor,
+ org.eclipse.graphiti.ui.features;version="0.9.2",
+ org.eclipse.graphiti.ui.platform;version="0.9.2"

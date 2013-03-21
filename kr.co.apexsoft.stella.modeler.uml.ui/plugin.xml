@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
+                  <extension
+                        point="org.eclipse.ui.editors">
+                     <editor
+                           class="kr.co.apexsoft.stella.modeler.uml.ui.editor.UML2Editor"
+                           contributorClass="org.eclipse.graphiti.ui.editor.DiagramEditorActionBarContributor"
+                           default="true"
+                           extensions="suml"
+                           id="kr.co.apexsoft.stella.modeler.uml.ui.uml2editor"
+                           name="UML2 Visual Editor">
+                     </editor>
+                  </extension>
    <extension
          point="org.eclipse.graphiti.ui.diagramTypes">
       <diagramType
@@ -31,11 +42,16 @@
       </imageProvider>
    </extension>
                   <extension
-                        point="kr.co.apexsoft.stella.modeler.featureContainers">
-                     <featureContainer
-                           class="kr.co.apexsoft.stella.modeler.uml.ui.FeatureContainer1"
-                           id="kr.co.apexsoft.stella.modeler.uml.ui.featureContainer1"
-                           name="kr.co.apexsoft.stella.modeler.uml.ui.featureContainer1">
-                     </featureContainer>
+                        point="org.eclipse.core.contenttype.contentTypes">
+                     <content-type
+                           base-type="org.eclipse.core.runtime.xml"
+                           file-extensions="suml,suml2"
+                           id="kr.co.apexsoft.stella.modeler.uml.contenttype"
+                           name="UML2 Editor Type"
+                           priority="normal">
+                        <describer
+                              class="kr.co.apexsoft.stella.modeler.uml.ui.UML2ContentDescriber">
+                        </describer>
+                     </content-type>
                   </extension>
 </plugin>

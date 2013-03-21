@@ -1,0 +1,18 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Graphiti Tutorial
+Bundle-SymbolicName: kr.co.apexsoft.graphiti.tutorial;singleton:=true
+Bundle-Version: 0.1.0
+Bundle-Activator: kr.co.apexsoft.graphiti.tutorial.Activator
+Bundle-Vendor: Apexsoft.co.kr
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.emf.edit,
+ org.eclipse.emf.transaction,
+ org.eclipse.gef,
+ org.eclipse.graphiti,
+ org.eclipse.graphiti.ui,
+ org.eclipse.ui.views.properties.tabbed,
+ org.eclipse.graphiti.examples.common
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy
