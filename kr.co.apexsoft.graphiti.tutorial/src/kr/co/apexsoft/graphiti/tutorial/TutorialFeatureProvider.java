@@ -3,6 +3,8 @@ package kr.co.apexsoft.graphiti.tutorial;
 import kr.co.apexsoft.graphiti.tutorial.features.TutorialAddEClassFeature;
 import kr.co.apexsoft.graphiti.tutorial.features.TutorialAddEReferenceFeature;
 import kr.co.apexsoft.graphiti.tutorial.features.TutorialAssociateDiagramEClassFeature;
+import kr.co.apexsoft.graphiti.tutorial.features.TutorialChangeColorEClassFeature;
+import kr.co.apexsoft.graphiti.tutorial.features.TutorialCollapseDummyFeature;
 import kr.co.apexsoft.graphiti.tutorial.features.TutorialCopyEClassFeature;
 import kr.co.apexsoft.graphiti.tutorial.features.TutorialCreateEClassFeature;
 import kr.co.apexsoft.graphiti.tutorial.features.TutorialCreateEReferenceFeather;
@@ -132,7 +134,9 @@ public class TutorialFeatureProvider extends DefaultFeatureProvider {
 		return new ICustomFeature[] {
 				new TutorialRenameEClassFeature(this),
 				new TutorialDrillDownEClassFeature(this),
-				new TutorialAssociateDiagramEClassFeature(this) };
+				new TutorialAssociateDiagramEClassFeature(this),
+				new TutorialCollapseDummyFeature(this),
+				new TutorialChangeColorEClassFeature(this) };
 	}
 
 	@Override

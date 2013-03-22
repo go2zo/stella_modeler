@@ -1,5 +1,7 @@
 package kr.co.apexsoft.graphiti.tutorial.features;
 
+import kr.co.apexsoft.graphiti.tutorial.util.StyleUtil;
+
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.graphiti.features.IFeatureProvider;
 import org.eclipse.graphiti.features.context.IAddConnectionContext;
@@ -50,8 +52,9 @@ public class TutorialAddEReferenceFeature extends AbstractAddFeature {
 		
 		IGaService gaService = Graphiti.getGaService();
 		Polyline polyline = gaService.createPolyline(connection);
-		polyline.setLineWidth(2);
-		polyline.setForeground(manageColor(E_REFERENCE_FOREGROUND));
+		polyline.setStyle(StyleUtil.getStyleForEClass(getDiagram()));
+//		polyline.setLineWidth(2);
+//		polyline.setForeground(manageColor(E_REFERENCE_FOREGROUND));
 		
 		// create link and wire it
 		link(connection, addedReference);
@@ -60,8 +63,10 @@ public class TutorialAddEReferenceFeature extends AbstractAddFeature {
 		ConnectionDecorator textDecorator =	peCreateService
 				.createConnectionDecorator(connection, true, 0.5, true);
 		Text text = gaService.createDefaultText(getDiagram(), textDecorator);
+		text.setStyle(StyleUtil.getStyleForTextDecorator(getDiagram()));
 		text.setForeground(manageColor(IColorConstant.BLACK));
 		gaService.setLocation(text, 10, 0);
+		
 		// set reference name in the text decorator
 		EReference eReference = (EReference) context.getNewObject();
 		text.setValue(eReference.getName());
@@ -79,8 +84,9 @@ public class TutorialAddEReferenceFeature extends AbstractAddFeature {
 		Polyline polyline = gaService.createPolyline(gaContainer, new int[] {
 				-15, 10, 0, 0, -15, -10
 		});
-		polyline.setForeground(manageColor(E_REFERENCE_FOREGROUND));
-		polyline.setLineWidth(2);
+		polyline.setStyle(StyleUtil.getStyleForEClass(getDiagram()));
+//		polyline.setForeground(manageColor(E_REFERENCE_FOREGROUND));
+//		polyline.setLineWidth(2);
 		return polyline;
 	}
 }

@@ -13,7 +13,6 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.graphiti,
  org.eclipse.graphiti.ui,
  org.eclipse.ui.views.properties.tabbed,
- org.eclipse.graphiti.examples.common,
- org.eclipse.graphiti.examples.tutorial
+ org.eclipse.graphiti.examples.common
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy

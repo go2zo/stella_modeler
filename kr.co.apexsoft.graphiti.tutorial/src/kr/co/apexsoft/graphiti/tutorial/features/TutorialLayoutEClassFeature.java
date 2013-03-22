@@ -1,5 +1,7 @@
 package kr.co.apexsoft.graphiti.tutorial.features;
 
+import java.util.Iterator;
+
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -44,37 +46,54 @@ public class TutorialLayoutEClassFeature extends AbstractLayoutFeature {
 		ContainerShape containerShape = 
 				(ContainerShape) context.getPictogramElement();
 		GraphicsAlgorithm containerGa = containerShape.getGraphicsAlgorithm();
+		// the containerGa is the invisible rectangle
+		// containing the visible rectangle as its (first and only) child
+		GraphicsAlgorithm rectangle =
+				containerGa.getGraphicsAlgorithmChildren().get(0);
 		
-		// height
+		// height of invisible rectangle
 		if (containerGa.getHeight() < MIN_HEIGHT) {
 			containerGa.setHeight(MIN_HEIGHT);
 			anythingChanged = true;
 		}
 		
-		// width
+		// height of visible rectangle (same as invisible rectangle)
+		if (rectangle.getHeight() != containerGa.getHeight()) {
+			rectangle.setHeight(containerGa.getHeight());
+			anythingChanged = true;
+		}
+		
+		// width of invisible rectangle
 		if (containerGa.getWidth() < MIN_WIDTH) {
 			containerGa.setWidth(MIN_WIDTH);
 			anythingChanged = true;
 		}
 		
-		int containerWidth = containerGa.getWidth();
+		// width of visible rectangle (smaller than invisible rectangle)
+		int rectangleWidth = containerGa.getWidth()
+				- TutorialAddEClassFeature.INVISIBLE_RECT_RIGHT;
+		if (rectangle.getWidth() != rectangleWidth) {
+			rectangle.setWidth(rectangleWidth);
+			anythingChanged = true;
+		}
 		
-		for (Shape shape : containerShape.getChildren()) {
+		Iterator<Shape> iter = containerShape.getChildren().iterator();
+		while (iter.hasNext()) {
+			Shape shape = iter.next();
 			GraphicsAlgorithm graphicsAlgorithm = shape.getGraphicsAlgorithm();
 			IGaService gaService = Graphiti.getGaService();
 			IDimension size = 
 					gaService.calculateSize(graphicsAlgorithm);
-			if (containerWidth != size.getWidth()) {
+			if (rectangleWidth != size.getWidth()) {
 				if (graphicsAlgorithm instanceof Polyline) {
 					Polyline polyline = (Polyline) graphicsAlgorithm;
 					Point secondPoint = polyline.getPoints().get(1);
 					Point newSecondPoint =
-							gaService.createPoint(containerWidth, secondPoint.getY());
+							gaService.createPoint(rectangleWidth, secondPoint.getY());
 					polyline.getPoints().set(1, newSecondPoint);
 					anythingChanged = true;
 				} else {
-					gaService.setWidth(graphicsAlgorithm,
-							containerWidth);
+					gaService.setWidth(graphicsAlgorithm, rectangleWidth);
 					anythingChanged = true;
 				}
 			}

@@ -20,7 +20,60 @@
          <diagramType
                id="kr.co.apexsoft.graphiti.tutorial.diagramType1">
          </diagramType>
+         <imageProvider
+               id="kr.co.apexsoft.graphiti.tutorial.imageProvider1">
+         </imageProvider>
       </diagramTypeProvider>
+   </extension>
+   <extension
+         point="org.eclipse.graphiti.ui.imageProviders">
+      <imageProvider
+            class="kr.co.apexsoft.graphiti.tutorial.MytutorialImageProvider"
+            id="kr.co.apexsoft.graphiti.tutorial.imageProvider1">
+      </imageProvider>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
+      <propertyContributor
+            contributorId="mytutorial.PropertyContributor">
+         <propertyCategory
+               category="Graphiti">
+         </propertyCategory>
+      </propertyContributor>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
+      <propertyTabs
+            contributorId="mytutorial.PropertyContributor">
+         <propertyTab
+               category="Graphiti"
+               id="graphiti.table.tab"
+               label="Advanced">
+         </propertyTab>
+         <propertyTab
+               category="Graphiti"
+               id="graphiti.main.tab"
+               label="Main">
+         </propertyTab>
+      </propertyTabs>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertySections">
+      <propertySections
+            contributorId="mytutorial.PropertyContributor">
+         <propertySection
+               class="kr.co.apexsoft.graphiti.tutorial.property.AdvancedPropertySection"
+               filter="kr.co.apexsoft.graphiti.tutorial.property.MyTutorialEClassFilter"
+               id="graphiti.main.tab.emfreference.table"
+               tab="graphiti.table.tab">
+         </propertySection>
+         <propertySection
+               class="kr.co.apexsoft.graphiti.tutorial.property.MyTutorialEClassSection"
+               filter="kr.co.apexsoft.graphiti.tutorial.property.MyTutorialEClassFilter"
+               id="graphiti.main.tab.emfclass"
+               tab="graphiti.main.tab">
+         </propertySection>
+      </propertySections>
    </extension>
 
 </plugin>
