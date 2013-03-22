@@ -26,10 +26,10 @@ public class TutorialCreateEClassFeature extends AbstractCreateFeature {
 	@Override
 	public Object[] create(ICreateContext context) {
 		// ask user for EClass name
-		String newClassName = ExampleUtil.askString(TITLE, USER_QUESTION,  "");
-		if (newClassName == null || newClassName.trim().length() == 0) {
-			return EMPTY;
-		}
+//		String newClassName = ExampleUtil.askString(TITLE, USER_QUESTION,  "");
+//		if (newClassName == null || newClassName.trim().length() == 0) {
+//			return EMPTY;
+//		}
 
 		// create EClass
 		EClass newClass = EcoreFactory.eINSTANCE.createEClass();
@@ -38,10 +38,13 @@ public class TutorialCreateEClassFeature extends AbstractCreateFeature {
 		// simplicity's sake. Normally, a customer would use its own
 		// model persistence layer for storing the business model separately.
 		getDiagram().eResource().getContents().add(newClass);
-		newClass.setName(newClassName);
+//		newClass.setName(newClassName);
 
 		// do the add
 		addGraphicalRepresentation(context, newClass);
+		
+		// activate direct editing after object creation
+		getFeatureProvider().getDirectEditingInfo().setActive(true);
 
 		// return newly created business object(s)
 		return new Object[] { newClass };

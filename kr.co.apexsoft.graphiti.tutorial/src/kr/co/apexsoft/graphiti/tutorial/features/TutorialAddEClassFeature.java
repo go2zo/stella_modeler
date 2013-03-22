@@ -1,13 +1,16 @@
 package kr.co.apexsoft.graphiti.tutorial.features;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.graphiti.features.IDirectEditingInfo;
 import org.eclipse.graphiti.features.IFeatureProvider;
 import org.eclipse.graphiti.features.context.IAddContext;
 import org.eclipse.graphiti.features.impl.AbstractAddShapeFeature;
 import org.eclipse.graphiti.mm.algorithms.Polyline;
+import org.eclipse.graphiti.mm.algorithms.Rectangle;
 import org.eclipse.graphiti.mm.algorithms.RoundedRectangle;
 import org.eclipse.graphiti.mm.algorithms.Text;
 import org.eclipse.graphiti.mm.algorithms.styles.Orientation;
+import org.eclipse.graphiti.mm.pictograms.BoxRelativeAnchor;
 import org.eclipse.graphiti.mm.pictograms.ContainerShape;
 import org.eclipse.graphiti.mm.pictograms.Diagram;
 import org.eclipse.graphiti.mm.pictograms.PictogramElement;
@@ -110,8 +113,44 @@ public class TutorialAddEClassFeature extends AbstractAddShapeFeature {
 
 			// create link and wire it
 			link(shape, addedClass);
+			
+			// provide information to support direct-editing directly 
+	        // after object creation (must be activated additionally)
+			IDirectEditingInfo directEditingInfo =
+					getFeatureProvider().getDirectEditingInfo();
+			// set container shape for direct editing after object creation
+			directEditingInfo.setMainPictogramElement(containerShape);
+			// set shape and graphics algorithm where the editor for
+			// direct editing shall be opened after object creation
+			directEditingInfo.setPictogramElement(shape);
+			directEditingInfo.setGraphicsAlgorithm(text);
 		}
 
+		// add a chopbox anchor to the shape
+		peCreateService.createChopboxAnchor(containerShape);
+		
+		// create an additional box relative anchor at middle-right
+		final BoxRelativeAnchor boxAnchor =
+				peCreateService.createBoxRelativeAnchor(containerShape);
+		
+		boxAnchor.setRelativeWidth(1.0);
+		boxAnchor.setRelativeHeight(0.38); // use golden section
+		boxAnchor.setUseAnchorLocationAsConnectionEndpoint(true);
+		boxAnchor.setReferencedGraphicsAlgorithm(roundedRectangle);
+		
+		// assign a rectangle graphics algorithm for the box relative anchor
+		// note, that the rectangle is inside the border of the rectangle shape
+		final Rectangle rectangle = gaService.createRectangle(boxAnchor);
+		rectangle.setForeground(manageColor(E_CLASS_FOREGROUND));
+		rectangle.setBackground(manageColor(E_CLASS_BACKGROUND));
+		rectangle.setLineWidth(2);
+		// anchor is located on the right border of the visible rectangle
+		// and touches the border of the invisible rectangle
+		gaService.setLocationAndSize(rectangle, -12, -6, 12, 12);
+
+		// call the layout feature
+        layoutPictogramElement(containerShape);
+        
 		return containerShape;
 	}
 
