@@ -51,7 +51,7 @@ public class TutorialAddEReferenceFeature extends AbstractAddFeature {
 		connection.setEnd(addContext.getTargetAnchor());
 		
 		IGaService gaService = Graphiti.getGaService();
-		Polyline polyline = gaService.createPolyline(connection);
+		Polyline polyline = gaService.createPlainPolyline(connection);
 		polyline.setStyle(StyleUtil.getStyleForEClass(getDiagram()));
 //		polyline.setLineWidth(2);
 //		polyline.setForeground(manageColor(E_REFERENCE_FOREGROUND));
@@ -81,7 +81,7 @@ public class TutorialAddEReferenceFeature extends AbstractAddFeature {
 
 	private Polyline createArrow(GraphicsAlgorithmContainer gaContainer) {
 		IGaService gaService = Graphiti.getGaService();
-		Polyline polyline = gaService.createPolyline(gaContainer, new int[] {
+		Polyline polyline = gaService.createPlainPolyline(gaContainer, new int[] {
 				-15, 10, 0, 0, -15, -10
 		});
 		polyline.setStyle(StyleUtil.getStyleForEClass(getDiagram()));

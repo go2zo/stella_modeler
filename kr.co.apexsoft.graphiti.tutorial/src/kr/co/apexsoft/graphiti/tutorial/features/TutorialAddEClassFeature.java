@@ -1,5 +1,6 @@
 package kr.co.apexsoft.graphiti.tutorial.features;
 
+import kr.co.apexsoft.graphiti.tutorial.util.PropertyUtil;
 import kr.co.apexsoft.graphiti.tutorial.util.StyleUtil;
 
 import org.eclipse.emf.ecore.EClass;
@@ -64,6 +65,7 @@ public class TutorialAddEClassFeature extends AbstractAddShapeFeature {
 		IPeCreateService peCreateService = Graphiti.getPeCreateService();
 		ContainerShape containerShape =
 				peCreateService.createContainerShape(targetDiagram, true);
+		PropertyUtil.setEClassShape(containerShape);
 
 		// check whether the context has a size (e.g. from a create feature)
 		// otherwise define a default size for the shape

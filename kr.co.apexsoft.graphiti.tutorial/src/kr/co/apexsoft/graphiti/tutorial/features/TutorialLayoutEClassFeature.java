@@ -2,9 +2,8 @@ package kr.co.apexsoft.graphiti.tutorial.features;
 
 import java.util.Iterator;
 
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
+import kr.co.apexsoft.graphiti.tutorial.util.PropertyUtil;
+
 import org.eclipse.graphiti.datatypes.IDimension;
 import org.eclipse.graphiti.features.IFeatureProvider;
 import org.eclipse.graphiti.features.context.ILayoutContext;
@@ -32,12 +31,13 @@ public class TutorialLayoutEClassFeature extends AbstractLayoutFeature {
 	public boolean canLayout(ILayoutContext context) {
 		// return true, if pictogram element is linked to an EClass
 		PictogramElement pe = context.getPictogramElement();
-		if (!(pe instanceof ContainerShape)) {
-			return false;
-		}
-		EList<EObject> businessObjects = pe.getLink().getBusinessObjects();
-		return businessObjects.size() == 1
-				&& businessObjects.get(0) instanceof EClass;
+		return PropertyUtil.isEClassShape(pe);
+//		if (!(pe instanceof ContainerShape)) {
+//			return false;
+//		}
+//		EList<EObject> businessObjects = pe.getLink().getBusinessObjects();
+//		return businessObjects.size() == 1
+//				&& businessObjects.get(0) instanceof EClass;
 	}
 
 	@Override

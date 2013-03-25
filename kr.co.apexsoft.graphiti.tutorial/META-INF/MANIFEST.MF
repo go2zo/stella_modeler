@@ -6,6 +6,7 @@ Bundle-Version: 0.1.0
 Bundle-Activator: kr.co.apexsoft.graphiti.tutorial.Activator
 Bundle-Vendor: Apexsoft.co.kr
 Require-Bundle: org.eclipse.ui,
+ org.eclipse.ui.ide,
  org.eclipse.core.runtime,
  org.eclipse.emf.edit,
  org.eclipse.emf.transaction,
@@ -13,6 +14,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.graphiti,
  org.eclipse.graphiti.ui,
  org.eclipse.ui.views.properties.tabbed,
- org.eclipse.graphiti.examples.common
+ org.eclipse.graphiti.examples.common,
+ org.eclipse.core.expressions
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
